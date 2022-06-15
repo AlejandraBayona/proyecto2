@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Censo;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 
 class CensoController extends Controller
@@ -45,8 +47,14 @@ class CensoController extends Controller
      */
     public function show($dui)
     {
-        $censos = Censo::with('persona')->find($dui);
-
+        $censos = Persona::where('dui', $dui)->get([
+            'nombre', 
+            'apellido',
+            'fecha_nacimiento',
+            'dui', 
+            'estado_civil'
+        ]);
+       
         return $censos;
     }
 
