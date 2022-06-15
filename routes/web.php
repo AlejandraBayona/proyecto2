@@ -16,3 +16,5 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->get('/persona/{dui}', 'PersonaController@getByDui');
+$router->post('/persona/new/', 'PersonaController@created');
