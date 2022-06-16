@@ -15,7 +15,10 @@ class CensoController extends Controller
      */
     public function index()
     {
-        //
+       //$censos = Censo::all();
+       $municios= Municipio::
+       $censos= Censo::join('personas','persona_id','=','personas.id')->join('municipios','municipio_id','=','municipios.id')->get();
+       return $censos;
     }
 
     /**
@@ -45,8 +48,14 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    
     public function show($dui)
     {
+      $censosss= DB::table('censos')->join('personas','persona_id','=','persona.id')->get();
+
+
+
         $censos = Persona::where('dui', $dui)->get([
             'nombre', 
             'apellido',
@@ -55,7 +64,7 @@ class CensoController extends Controller
             'estado_civil'
         ]);
        
-        return $censos;
+        return $censosss;
     }
 
     /**

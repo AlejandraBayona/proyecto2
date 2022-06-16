@@ -22,17 +22,18 @@ class PersonaController extends Controller
         $persona = Persona::Where("dui", $dui)->get($this->GetFilter)->first();
         $edad= $this->busca_edad($persona->fecha_nacimiento);
 
-        $info= array($persona,$edad);
+        $info= array('persona'=>$persona,'edad'=>$edad);
 
         return response()->json($info);
     }
 
     public function created(Request $request) {
-        
-        /*if($request->dui{
-             => null,
+        //validando la edad del usuario
+        $edad= $this->busca_edad($request->fecha_nacimiento);
+       if($edad<18){
+             $request->dui=null;
 
-        }*/
+        }
         $persona = new Persona([
             "nombre" => $request->nombre,
             "apellido" => $request->apellido,
