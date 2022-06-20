@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Censo;
-use App\Models\Persona;
+
 use Illuminate\Http\Request;
 
 class CensoController extends Controller
@@ -15,7 +15,10 @@ class CensoController extends Controller
      */
     public function index()
     {
-        //
+
+
+       $censos= Censo::select('censos.id','personas.*', 'municipios.nombre_municipio')->join('personas','persona_id','=','personas.id')->join('municipios','municipio_id','=','municipios.id')->get();
+       return $censos;
     }
 
     /**
@@ -45,17 +48,23 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($dui)
     {
+      $censosss= DB::table('censos')->join('personas','persona_id','=','persona.id')->get();
+
+
+
         $censos = Persona::where('dui', $dui)->get([
-            'nombre', 
+            'nombre',
             'apellido',
             'fecha_nacimiento',
-            'dui', 
+            'dui',
             'estado_civil'
         ]);
-       
-        return $censos;
+
+        return $censosss;
     }
 
     /**

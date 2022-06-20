@@ -15,7 +15,7 @@ class CreateMunicipiosTable extends Migration
     {
         Schema::create('municipios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 150);
+            $table->string('nombre_municipio', 150);
 
             $table->bigInteger('departamento_id', null, true)->index();
 

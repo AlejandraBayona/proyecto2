@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Censo extends Model
 {
+    protected $table='censos';
     protected $fillable = [
-        'nombre', 
-        'apellido',
-        'fecha_nacimiento',
-        'dui', 
-        'estado_civil'
+        'id','persona_id','municipio_id'
+
+    ];
+    protected $hidden= [
+        'created_at',
+        'updated_at',
     ];
 }

@@ -20,3 +20,9 @@ $router->get('/persona/{dui}', 'PersonaController@getByDui');
 $router->post('/persona/new/', 'PersonaController@created');
 
 $router->get('/censos/{dui}','CensoController@show');
+$router->get('/censos', 'CensoController@index');
+$router->post('/persona/new/', 'PersonaController@create');
+
+$router->post('/censos/{dui}','CensoController@show');
+
+
