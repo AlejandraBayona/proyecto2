@@ -24,12 +24,21 @@ class PersonaRequest extends FormRequest
     protected function rules(): array
     {
         return [
-            "nombre" => ["required"],
-            "apellido" => ["required"],
-            "fecha_nacimiento" => ["required"],
-            "dui" => ["required"],
-            "estado_civil" => ["required"],
-    
+            'nombres' => ['required'],
+            'apellidos' => ['required'],
+            'fecha_nacimiento' => ['required'],
+             'dui' => ['required'],
+            'estado_civil' => ['required'],
+
+        ];
+    }
+    protected function messages(): array{
+        return[
+            'nombres.required'=>'El nombre es obligatorio',
+            'apellidos.required'=>'Los apellidos son obligatorios',
+            'fecha_nacimiento.required'=>'La fecha de nacimiento es obligatoria',
+            'dui.required'=>'El dui es obligatorio',
+            'estado_civil.required'=>'El estado civil es obligatorio',
         ];
     }
 }

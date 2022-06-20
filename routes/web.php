@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 });
 $router->get('/persona/{dui}', 'PersonaController@getByDui');
 $router->get('/censos', 'CensoController@index');
-$router->post('/persona/new/', 'PersonaController@created');
+$router->post('/persona/new/', 'PersonaController@create');
 
 $router->post('/censos/{dui}','CensoController@show');
 

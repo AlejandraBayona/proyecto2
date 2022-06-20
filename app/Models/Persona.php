@@ -8,6 +8,10 @@ class Persona extends Model
 {
     protected $table = "personas";
     protected $fillable = [
-        'nombre', 'apellido' ,'fecha_nacimiento','dui', 'estado_civil',
+        'id','nombres', 'apellidos' ,'fecha_nacimiento','dui', 'estado_civil',
+    ];
+    protected $hidden= [
+        'created_at',
+        'updated_at',
     ];
 }
